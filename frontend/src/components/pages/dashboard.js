@@ -4,6 +4,7 @@ import NavbarSidebar from '../crumbs/NavbarSidebar';
 import Footer from '../crumbs/footer';
 import './dashboard.css';
 
+
 const Dashboard = ({ courses }) => {
   return (
     <>
