@@ -1,6 +1,6 @@
 # Learning Management System (LMS)
 
-This project is a Learning Management System (LMS) built with Django REST Framework for the backend and React for the frontend. The LMS allows students to register, log in, access subjects and topics, watch lecture videos, read PDFs, and take quizzes. The progress and scores are tracked and displayed on a dashboard.
+This project is a Learning Management System (LMS) built with Django for the backend and React for the frontend. The LMS allows students access subjects and topics, watch lecture videos, read PDFs, and take quizzes. The progress and scores are tracked and displayed on a dashboard.
 
 ## Table of Contents
 
@@ -34,6 +34,8 @@ The project consists of two main parts:
   - `Dashboard`
   - `Course`
   - `Question`
+  - `Contact`
+  - `Profile`
 - **Routing:**
   - React Router is used for navigation between components
 
@@ -52,7 +54,7 @@ The project consists of two main parts:
    source venv/bin/activate
 3. **Install dependencies:**
    ```sh
-   Copy code
+   cd backend
    pip install -r requirements.txt
 4. **Run migrations:**
    ```sh
@@ -70,7 +72,6 @@ The project consists of two main parts:
 
 1. **Navigate to the frontend directory:**
    ```sh
-   mkdir frontend
    cd frontend
 
 2. **Install dependencies:**
@@ -83,8 +84,8 @@ The project consists of two main parts:
 ## Usage Guidelines
 
 ### Register and Login:
-- Navigate to the registration page and create a new account.
-- Login with your credentials to access the LMS.
+- Navigate to the django admin panel. at 127.0.0.1:8000/admin
+- Login with the superuser credentials to access the admin.
 
 ### Dashboard:
 - The dashboard displays the overall score and completion percentage for each course.
@@ -92,7 +93,7 @@ The project consists of two main parts:
 
 ### Courses and Topics:
 - Click on a course to see the list of topics.
-- Each topic contains a video, a PDF, and a quiz.
+- Each topic contains a video, a PDF, and quizzes.
 
 ### Taking Quizzes:
 - Watch the lecture video and read the PDF.
@@ -100,10 +101,6 @@ The project consists of two main parts:
 - Your score and completion percentage will be saved and displayed on the dashboard.
 
 ## API Endpoints
-
-### Authentication
-- `POST /api/register/` - Register a new student
-- `POST /api/login/` - Login a student
 
 ### Subjects
 - `GET /api/subjects/` - List all subjects
