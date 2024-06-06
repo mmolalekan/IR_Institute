@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Subject, Topic, Question
 
+
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
@@ -19,3 +20,4 @@ class SubjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subject
         fields = '__all__'
+
