@@ -127,3 +127,4 @@ const Dashboard = ({ courses }) => {
 };
 
 export default Dashboard;
+
