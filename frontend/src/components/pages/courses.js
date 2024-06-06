@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import NavbarSidebar from '../crumbs/NavbarSidebar'
 import Footer from '../crumbs/footer'
 
+
 const Course = () => {
   const [collapsedSubjects, setCollapsedSubjects] = useState({});
 
