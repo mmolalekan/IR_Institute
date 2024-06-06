@@ -45,6 +45,7 @@ The project consists of two main parts:
    ```sh
    git clone https://github.com/mmolalekan/IR_Institute.git
    cd IR_Institute
+
 2. **Create a virtual environment:**
    ```sh
    python3 -m venv venv
@@ -63,3 +64,94 @@ The project consists of two main parts:
 6. **Start the development server:**
    ```sh
    python manage.py runserver
+
+
+### Frontend Setup
+
+1. **Navigate to the frontend directory:**
+   ```sh
+   mkdir frontend
+   cd frontend
+
+2. **Install dependencies:**
+   ```sh
+   npm install
+3. **Start the development server:**
+   ```sh
+   npm start
+
+## Usage Guidelines
+
+### Register and Login:
+- Navigate to the registration page and create a new account.
+- Login with your credentials to access the LMS.
+
+### Dashboard:
+- The dashboard displays the overall score and completion percentage for each course.
+- It also lists the topics completed and in progress.
+
+### Courses and Topics:
+- Click on a course to see the list of topics.
+- Each topic contains a video, a PDF, and a quiz.
+
+### Taking Quizzes:
+- Watch the lecture video and read the PDF.
+- Answer the quiz questions.
+- Your score and completion percentage will be saved and displayed on the dashboard.
+
+## API Endpoints
+
+### Authentication
+- `POST /api/register/` - Register a new student
+- `POST /api/login/` - Login a student
+
+### Subjects
+- `GET /api/subjects/` - List all subjects
+- `POST /api/subjects/` - Create a new subject
+- `GET /api/subjects/:id/` - Retrieve a subject by ID
+- `PATCH /api/subjects/:id/` - Update a subject by ID
+- `DELETE /api/subjects/:id/` - Delete a subject by ID
+
+### Topics
+- `GET /api/topics/` - List all topics
+- `POST /api/topics/` - Create a new topic
+- `GET /api/topics/:id/` - Retrieve a topic by ID
+- `PATCH /api/topics/:id/` - Update a topic by ID
+- `DELETE /api/topics/:id/` - Delete a topic by ID
+- `POST /api/topics/:id/save-progress/` - Save progress for a topic
+
+### Questions
+- `GET /api/questions/` - List all questions
+- `POST /api/questions/` - Create a new question
+- `GET /api/questions/:id/` - Retrieve a question by ID
+- `PATCH /api/questions/:id/` - Update a question by ID
+- `DELETE /api/questions/:id/` - Delete a question by ID
+
+## Frontend Components
+
+### NavbarSidebar
+- Contains navigation links to different parts of the LMS.
+
+### Footer
+- A simple footer component.
+
+### Dashboard
+- Displays the overall progress and scores for each course.
+
+### Course
+- Lists the topics within a selected course.
+
+### Question
+- Handles the quiz functionality for each topic.
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/fooBar`)
+3. Commit your changes (`git commit -m 'Add some fooBar'`)
+4. Push to the branch (`git push origin feature/fooBar`)
+5. Create a new Pull Request
+
+## License
+
+This project is licensed under the MIT License.
