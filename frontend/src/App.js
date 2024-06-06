@@ -29,6 +29,7 @@ function App() {
         setCourseErrors(error.message);
       }
     };
+    
     fetchCourses();
   }, []);
 
