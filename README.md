@@ -43,5 +43,23 @@ The project consists of two main parts:
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/your-username/your-repo.git
-   cd your-repo
+   git clone https://github.com/mmolalekan/IR_Institute.git
+   cd IR_Institute
+2. **Create a virtual environment:**
+   ```sh
+   python3 -m venv venv
+   source venv/bin/activate
+3. **Install dependencies:**
+   ```sh
+   Copy code
+   pip install -r requirements.txt
+4. **Run migrations:**
+   ```sh
+   python manage.py makemigrations
+   python manage.py migrate
+5. **Create a superuser:**
+   ```sh
+   python manage.py createsuperuser
+6. **Start the development server:**
+   ```sh
+   python manage.py runserver
