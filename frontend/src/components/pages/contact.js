@@ -14,7 +14,7 @@ const Contact = () => {
         <div className="row">
 
           <div className="image">
-            <img src="images/contact-img.svg" alt="" />
+            <img src="images/gif.gif" alt="" />
           </div>
 
           <form action="" method="post">

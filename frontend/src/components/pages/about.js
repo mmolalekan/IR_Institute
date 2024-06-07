@@ -26,7 +26,7 @@ const About = () => {
         <div className="row">
 
           <div className="image">
-            <img src="images/about-img.svg" alt="" />
+            <img src="images/gif.gif" alt="" />
           </div>
 
           <div className="content">

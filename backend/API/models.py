@@ -22,7 +22,7 @@ class Topic(models.Model):
 
 class Question(models.Model):
     topic = models.ForeignKey(Topic, related_name='questions', on_delete=models.CASCADE)
-    question_text = models.CharField(max_length=255)
+    question_text = models.TextField()
     option1 = models.CharField(max_length=255)
     option2 = models.CharField(max_length=255)
     option3 = models.CharField(max_length=255)

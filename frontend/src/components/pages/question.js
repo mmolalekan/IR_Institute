@@ -8,10 +8,6 @@ import axios from "axios";
 const Question = () => {
   const { id } = useParams(); // Retrieve the ID from the URL
 
-  useEffect(() => {
-    document.title = "Study"
-  }, []);
-
   const [topic, setTopic] = useState(null);
   const [topicErrors, setTopicErrors] = useState('');
 

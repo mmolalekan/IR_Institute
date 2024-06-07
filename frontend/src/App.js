@@ -19,6 +19,10 @@ function App() {
   const [courseErrors, setCourseErrors] = useState('');
 
   useEffect(() => {
+    document.title = "IR Institute"
+  }, []);
+
+  useEffect(() => {
     const fetchCourses = async () => {
       try {
         const response = await axios.get('http://127.0.0.1:8000/api/subjects/');
@@ -29,7 +33,7 @@ function App() {
         setCourseErrors(error.message);
       }
     };
-    
+
     fetchCourses();
   }, []);
 
@@ -44,7 +48,7 @@ function App() {
         <Route path="/home" element={<Dashboard courses={courses} />} />
         <Route path="/question/:id" element={<Question />} />
         <Route path="/about" element={<About />} />
-        <Route path="/courses" element={<Courses />} />
+        <Route path="/courses" element={<Courses courses={courses} />} />
         <Route path="/teachers" element={<Teachers />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

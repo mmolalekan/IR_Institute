@@ -5,7 +5,7 @@ import "./sidebar.css";
 
 const Sidebar = ({ sidebarActive, closeSidebar }) => {
   return (
-    <div className={`side-bar ${sidebarActive ? 'active' : ''}`}>
+    <div className={`side-bar${sidebarActive ? ' active' : ''}`}>
       <div id="close-btn" onClick={closeSidebar}>
         <i className="fas fa-times"></i>
       </div>

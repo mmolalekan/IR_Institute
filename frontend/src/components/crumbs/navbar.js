@@ -27,7 +27,7 @@ const Navbar = ({ onToggleSidebar }) => {
   return (
     <header className="header">
       <section className="flex">
-        <Link to="/home" className="logo">IR Institute</Link>
+        <Link to="/" className="logo">IR Institute</Link>
         <div className="icons">
           <div id="menu-btn" className="fas fa-bars" onClick={onToggleSidebar}></div>
           <Link to="/profile"><div id="user-btn" className="fas fa-user"></div></Link>

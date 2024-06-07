@@ -1,9 +1,10 @@
 import './footer.css';
 
 const Footer = () => {
+   const currentYear = new Date().getFullYear();
    return (
       <footer className="footer">
-         &copy; copyright @ 2024 by <span>IR Institute</span> | all rights reserved!
+         &copy; {currentYear} <span>IR Institute</span> | All rights reserved!
       </footer>
    );
 }
