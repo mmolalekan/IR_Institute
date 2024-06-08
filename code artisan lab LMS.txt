@@ -1,0 +1,314 @@
+Features
+============================
+- Website
+ - Explore Courses according to category
+ - Search Courses with keyword
+ - About Us Page
+ - Contact Us Page
+ - FAQ Page
+ - Support
+ - Join as Student and enroll in course
+ - Join as Teacher and upload content
+============================
+- Teacher Panel
+ - Login/Register/OTP verify via email
+ - ForgetPassword/ChangePasword/
+ - Profile/Social Accounts
+ - Send message to Enrolled Student (Individually Or All)
+ - Category CRUD
+ - Upload content according to category
+ - Upload study material according to course
+ - Can see the total enrolled students and their progress
+ - Count Total views of content
+============================
+- Student Panel
+ - Login/Register/OTP verify via email
+ - ForgetPassword/ChangePasword/Profile
+ - Enrolled Courses
+ - View the profile of content creator
+ - Send message to Content Creators (Individually Or All)
+============================
+- Admin Panel
+ - Manage everything
+ - Search anything
+ - Add/Update/Delete Any Content
+ - Enable disable any course, student, or teacher
+============================
+
+Technologies
+-------------
+Backend
+==============
+- Python
+- Django
+- REST API (Django Rest Framework)
+- MySQL
+
+Frontend
+==============
+- Bootstrap 5
+- ReactJs
+
+++++++++++++++++++++++++++++++++++++++++++++
+Setting up Django
+  Installations: django, mysqlclient
+  1-setup : django-admin startproject project_name && cd project_name/ && python manage.py startapp app_name
+  2-database: create mysql database for the project
+  3-create data model(s): app_name/models.py
+  4-register model(s) in admin panel: app_name/admin.py
+  5-Settings for app_name and database: add app_name to the INSTALLED_APPS and mysql to the DATABASES inside project_name/settings.py
+  6-migrate all data to the database: python manage.py makemigrations && python manage.py migrate (check workbench)
+  7-create admin account: python manage.py createsuperuser
+  python manage.py runserver
+
+Setting up django rest_framework
+  Installations: djangorestframework 
+  1-create model-to-json serializer: app_name/serializers.py
+  2-create view(HTTP methods) with authentication and permission: app_name/views.py
+  3-create API endpoints: app_name/urls.py
+  4-connect/include endpoints to the project_name: project_name/urls.py
+  5-settings for rest_framework: inside project_name/settings.py;
+    add 'rest_framework' and/or 'rest_framework.authtoken' to the INSTALLED_APPS 
+    add REST_FRAMEWORK={...} in the file
+  6- migrate authtoken(table in the database): python manage.py migrate
+  7-create token: python manage.py drf_create_token -r user_name
+  8-Use postman to ensure the token is working
+++++++++++++++++++++++++++++++++++++++++++++
+
+
+#1: setup django with admin panel  
+>>> mkdir IR_LMS
+>>> cd IR_LMS/
+>>> sudo apt install python3-pip
+>>> sudo apt install python3-virtualenv
+>>> virtualenv venv
+>>> source venv/bin/activate
+>>> django-admin startproject LMS_Backend
+>>> cd LMS_Backend/
+>>> python manage.py startapp main
+
+add 'main', to INSTALLED_APPS inside settings.py
+
+>>> python manage.py migrate >>> migrates to sqlite, not really useful
+>>> python manage.py runserver
+
+
+#2 Connect django with mysql Database
+create "django_lms Database in mysql via workbench
+>>> pip install mysqlclient
+>>> python manage.py migrate
+add mysql
+  DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django_lms',
+        'USER': 'root',
+        'PASSWORD': '4199',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
+check workbench
+
+
+#3 create django models & register in admin
+Create models: Go to main/models.py
+  # Teacher Model
+  # Course Category Models
+  # Course Model
+  # Student Model
+>>> python manage.py makemigrations
+>>> python manage.py migrate
+check workbench
+
+Add models to admin panel: Go to main/admin.py
+#registering models on the admin panel
+
+>>> python manage.py createsuperuser
+>>> python manage.py runserver
+
+
+#4. django rest framework model serializer
+documentation: django-rest-framework.org/tutorial/quickstart/
+>>> pip install djangorestframework
+add 'rest_framework', into settings under INSTALLED_APPS
+
+create main/serializers.py  # to serialize models as json
+open main/views.py          # APIView will provide the list of teachers
+create main/urls.py         # define the url to the api
+open /urls.py               # include the main/urls.py path
+
+
+#5. Generic Views in Django Rest Framework
+open main/views.py
+open main/urls.py
+inspect the at /api/teacher and /api/teacher/id
+
+
+DRF = Django Rest Framework
+#6 DRF authentication and Permissions
+Require authentication:
+  open main/views.py
+  ensure to logout from the admin panel before testing it
+Add login tothe browsable api:
+  open /urls.py # https://www.django-rest-framework.org/tutorial/4-authentication-and-permissions/#adding-login-to-the-browsable-api
+This is a basic permissions. Coming up is object level permission
+
+
+#7 DRF Token Based Authentication
+https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication
+Add to installed app:
+  open /settings.py and add 'rest_framework.authtoken',
+Provide default (also accepts secondary) authentication classes
+  open /settings.py and add REST_FRAMEWORK={...}
+python manage.py migrate >>> to appy the authtoken. It should typically notify you in the terminal if server is on
+Ensure the taken authtoken_token is created in the database
+Create token:
+  python manage.py drf_create_token -r admin >>> creates token for the existing user "admin"
+Use postman to ensure the token is working
+  url = http://127.0.0.1:8000/api/teacher/
+  Method = Get
+  Authorization = Token generated_token (Add this to the header)
+
+
+#8 Create ReactJs App_Django DRF ReactJs
+Install node
+npx create-react-app lms_frontend
+npm start
+
+
+#9 create reactjs Fucntional Component
+Create src/components/Home.js
+import Home inside App.js
+
+
+#10 create react template with Bootstrap 5_Home Page
+resources: tailwindcss UI components, flowbites tailwind css
+create /components/Main.js: Main.js houses all the components and then it is housed in App.js
+create /components/Header.js: Bring in navbar into Header.js
+Home.js should house cards components(jsx not a standalone file):
+  latest course, popular courses
+
+
+#11 create home page layout
+Home.js: bring in Popular Teachers cards
+create Footer.js: Bring in Footer
+Student Testimonials: bring in carousel using blockquotes
+
+
+#12 create SPA
+4 section so far: Latest courses, Popular courses, Popular teachers, Student Testimonials
+You create an SPA with react-router-dom
+doc: reactrouter.com/docs/v6/getting-started/tutorial
+  npx create-react-app router-tutorial (if not existing)
+  npm install react-router-dom
+
+in index.js:
+  Import BrowserRouter and wrap around App Component to use the react-router-dom package:
+    import { BrowserRouter } from 'react-router-dom';
+    reactDOM.render(
+      <React.StrictMode>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </React.StrictMode>,
+      document.getElementById('root')
+      );
+
+in Main.js: This works for url not clickable links
+  import Home from './Home';
+  import Header from './Header';
+  import Footer from './Footer';
+  import About from './About';
+  import {Routes, Route} from 'react-router-dom';
+
+  function Main() {
+    return (
+      <div className="App">
+        <Header/>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          </Routes>
+        <Footer />
+      </div>
+    );
+  }
+
+  export default Main;
+
+Clickable links in components:
+
+  import {Link} from 'react-router-dom';
+  <Link to="/"><img src="logo512.png" className="" alt="..." /></Link>
+
+Perk: import {Routes as Switch, Route} from 'react-router-dom';
+
+
+#13 create dynamic pages
+Dynamic pages gives different info based on your selections i.e. it loads info from a database
+Here, we want to create a page for individual course details, by url and by link and retrieve its id using useParams hook
+  create CourseDetail.js
+  in Main.js:
+    import CourseDetail
+    add route: <Route path="/detail/:course_id" element={<CourseDetail />} />
+
+  in Home.js:
+    import {Link} from 'react-router-dom';
+    <Link to="/details/1"><h2 className="">Course Title</h2></Link>
+  
+  in CourseDetail.js:
+    import { useParams } from 'react-router-dom';
+
+    export default function CourseDetail() {
+        let {course_id}=useParams();
+        return (
+        <div>CourseDetail {course_id}</div>
+      );
+    }
+
+
+#14 Course Detail page
+fleshen up course details (check screenshot).
+
+
+#15 User Dashboard Layout
+Create Components/User/ to house the components of the user
+create /user/Login.js (check screenshot)
+create /user/Register.js (check screenshot)
+in components/Header.js, Add "User Login" and "User Register" and make them navigate to the login page(<Link to="/user-login">User Login</Link>) and register page(<Link to="/user-register">User Register</Link>). Dont forget to import Link!.
+in Components/Main.js, Add Route for /user-login and /user-register. Remember to import the Login.js and Register.js components
+
+
+#16 User Dashboard Layout
+Add a drop down to the navbar(header.js check out screenshot)
+create components/User/Dashboard.js (Search keywords: dashboard, table). Dashboard component will manage other comoponents like Main.js
+Add link to dashboard from navbar(Header.js)
+Add route to Main.js "/user-dashboard"
+
+
+#17 User Dashboard Layout Completed
+inside components/User/, create:
+  Sidebar.js
+  MyCourse.js
+  FavoriteCourses.js
+  RecommendedCourses.js
+  ProfileSetting.js
+  ChangePasword.js
+  Add link to them from the dashboard component
+  /my-courses
+  /favorite-courses
+  /recommended-courses
+  /profile-setting
+  /change-pasword
+  /user-login will terminate the session and load Login component
+
+#18 Teacher Login & Register Layout
+Replicate User folder for Teacher folder. Tweak to suit your requirements
+
+#19 Teacher Dashboard Layout Completed
+Very good resource. Check it out
+
+#20 Teacher Detail page
+create /components/TeacherDetail.js component
+Link the Course Detail page to Teacher Detail page
